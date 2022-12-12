@@ -9,5 +9,13 @@
         android:id="@+id/mainFragment"
         android:name="com.example.flagquizapp.main.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_countryDetailFragment"
+            app:destination="@id/countryDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/countryDetailFragment"
+        android:name="com.example.flagquizapp.countryDetail.CountryDetailFragment"
+        android:label="CountryDetailFragment" />
 </navigation>
