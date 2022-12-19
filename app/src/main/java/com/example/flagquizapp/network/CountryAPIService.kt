@@ -3,14 +3,16 @@ package com.example.flagquizapp.network
 import com.example.flagquizapp.models.Country
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Headers
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 
-private const val BASE_URL = "https://restcountries.com/v3.1/name"
+private const val BASE_URL = "https://restcountries.com/v3.1/"
 
     /**
     * Build the Moshi object that Retrofit will be using, making sure to add the Kotlin adapter for
@@ -36,7 +38,9 @@ private const val BASE_URL = "https://restcountries.com/v3.1/name"
          * The @GET annotation indicates that the "realestate" endpoint will be requested with the GET
          * HTTP method
          */
-        @GET("country") suspend fun getCountryData(@Query("name") countryName: String): Country
+        @GET("name/{countryname}")
+        suspend fun getCountryData(@Path("countryname") countryName: String): List<Country>
+
     }
 
     /**
