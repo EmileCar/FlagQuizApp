@@ -2,4 +2,15 @@
     <string name="app_name">FlagQuizApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+
+    <!-- COUNTRY DETAIL STRINGS -->
+    <plurals name="capitals">
+        <item quantity="one"><b>Capital</b>: %s</item>
+        <item quantity="other"><b>Capitals</b>: %s</item>
+    </plurals>
+    <string name="population">Population: %s</string>
+    <string name="area">Area: %s km²</string>
+
 </resources>

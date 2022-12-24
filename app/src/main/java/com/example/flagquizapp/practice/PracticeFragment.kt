@@ -5,11 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.flagquizapp.R
 import com.example.flagquizapp.practice.CountryAdapter
 import com.example.flagquizapp.practice.CountryClickListener
 import com.example.flagquizapp.databinding.FragmentPracticeBinding
@@ -24,14 +26,17 @@ class PracticeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentPracticeBinding.inflate(layoutInflater, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_practice, container, false)
         viewModel = ViewModelProvider(this).get(PracticeViewModel::class.java)
         binding.viewModel = viewModel
 
-        binding.listCountries.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         val adapter = CountryAdapter(CountryClickListener {
             viewModel.onCountryClicked(it)
         })
+        binding.listCountries.adapter = adapter
+
+        val manager = LinearLayoutManager(activity)
+        binding.listCountries.layoutManager = manager
 
         viewModel.countryResponse.observe(viewLifecycleOwner, Observer {
             it?.let{
@@ -42,13 +47,14 @@ class PracticeFragment : Fragment() {
         viewModel.country.observe(viewLifecycleOwner, Observer {
             it?.let {
                 navigateToCountryDetail(it)
+                viewModel.navigateToDetailFinished()
             }
         })
 
-        binding.listCountries.adapter = adapter
-        val manager = LinearLayoutManager(activity)
-        binding.listCountries.layoutManager = manager
+        binding.listCountries.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
+        // niet wegdoen anders gaat de progressBar niet weg
+        binding.setLifecycleOwner(this)
 
         return binding.root;
     }

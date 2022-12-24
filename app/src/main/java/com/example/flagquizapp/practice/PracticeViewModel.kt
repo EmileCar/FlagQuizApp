@@ -41,22 +41,24 @@ class PracticeViewModel: ViewModel(){
 
         viewModelScope.launch {
             try {
-                // we zetten er [0] achter door de opbouw van de json, de data van de API is nog eens omringt in een Array
                 _countryResponse.value  = CountryAPI.retrofitService.getCountries()
-                Log.d("MIJNPROBLEEM!", _countryResponse.value!!.size.toString())
                 _loadingFinished.value = true
+
+                Log.d("MIJNPROBLEEM!", _countryResponse.value!!.size.toString())
             } catch (e: Exception) {
                 _error.value = e.localizedMessage
                 _loadingFinished.value = true
-                Log.d("MIJNPROBLEEM!", "EMPTY")
-                Log.d("MIJNPROBLEEM!", e.localizedMessage)
 
-                //print(e.localizedMessage)
+                Log.d("MIJNPROBLEEM!", e.localizedMessage)
             }
         }
     }
 
     fun onCountryClicked(country: Country) {
         _country.value = country
+    }
+
+    fun navigateToDetailFinished() {
+        _country.value = null
     }
 }

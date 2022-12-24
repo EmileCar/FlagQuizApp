@@ -2,9 +2,13 @@ package com.example.flagquizapp.practice
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import coil.transform.RoundedCornersTransformation
+import com.example.flagquizapp.R
 import com.example.flagquizapp.databinding.DetailCountryInListBinding
 import com.example.flagquizapp.models.Country
 
@@ -26,6 +30,9 @@ class CountryAdapter(val clickListener: CountryClickListener): ListAdapter<Count
             country: Country,
             clickListener: CountryClickListener
         ) {
+            val image = itemView.findViewById<ImageView>(R.id.imgFlag)
+            image.load(country.flags!!.png!!)
+
             binding.country = country
             binding.clickListener = clickListener
             binding.executePendingBindings()

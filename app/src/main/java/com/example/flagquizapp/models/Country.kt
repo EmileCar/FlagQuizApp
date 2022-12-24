@@ -8,7 +8,7 @@ data class Country(
     val altSpellings: List<String>?,     // lijst van verschillende spellings van het land
     val area: Double?,                   // de oppervlakte van het land
     val borders: List<String>?,          // lijst van de codes van de landen die het begrenst
-    val capital: List<String>?,          // lijst van de hoofdsteden (meestal lijst van 1)
+    val capital: List<String>?,          // lijst van de hoofdsteden (meestal lijst van 1) (ZUID AFRIKA heeft bijvoorbeeld 3 capitals)
     //val capitalInfo: CapitalInfo,     // locatie van de hoofdstad, niet belangrijk
     //val car: Car,                     // info van auto, niet belangrijk
     //val cca2: String,                 // country code 2 letters

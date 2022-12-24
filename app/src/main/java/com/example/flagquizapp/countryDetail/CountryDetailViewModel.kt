@@ -1,13 +1,9 @@
 package com.example.flagquizapp.countryDetail
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.example.flagquizapp.models.Country
-import com.example.flagquizapp.network.CountryAPI
-import kotlinx.coroutines.launch
 
 class CountryDetailViewModel(var __country: Country): ViewModel() {
     private val _country = MutableLiveData<Country>()
@@ -18,5 +14,14 @@ class CountryDetailViewModel(var __country: Country): ViewModel() {
         _country.value = __country
     }
 
+    fun convertCapitalsToString(): String{
+        var string = ""
+        if(country.value!!.capital != null){    // antarctica heeft bv geen capital
+            string = country.value!!.capital!!.joinToString(", ")
+        } else {
+            string = "No capital"
+        }
+        return string
+    }
 
 }
