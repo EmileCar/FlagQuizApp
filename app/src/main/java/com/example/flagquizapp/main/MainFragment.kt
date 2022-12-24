@@ -24,9 +24,9 @@ class MainFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         binding.viewModel = viewModel
 
-        viewModel.navigateToCountryDetailFragment.observe(viewLifecycleOwner, Observer {
+        viewModel.navigateToPracticeFragment.observe(viewLifecycleOwner, Observer {
             if (it){
-                findNavController().navigate(MainFragmentDirections.actionMainFragmentToCountryDetailFragment())
+                findNavController().navigate(MainFragmentDirections.actionMainFragmentToPracticeFragment())
                 viewModel.navigateFinish()
             }
         })

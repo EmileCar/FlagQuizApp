@@ -1,5 +1,9 @@
 package com.example.flagquizapp.models
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Languages(
     val afr: String?,
     val amh: String?,
@@ -154,4 +158,4 @@ data class Languages(
     val zho: String?,
     val zib: String?,
     val zul: String?
-)
+) : Parcelable

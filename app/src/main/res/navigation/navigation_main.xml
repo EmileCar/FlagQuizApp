@@ -13,9 +13,25 @@
         <action
             android:id="@+id/action_mainFragment_to_countryDetailFragment"
             app:destination="@id/countryDetailFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_practiceFragment"
+            app:destination="@id/practiceFragment" />
     </fragment>
     <fragment
         android:id="@+id/countryDetailFragment"
         android:name="com.example.flagquizapp.countryDetail.CountryDetailFragment"
-        android:label="CountryDetailFragment" />
+        android:label="CountryDetailFragment" >
+        <argument
+            android:name="country"
+            app:argType="com.example.flagquizapp.models.Country" />
+    </fragment>
+    <fragment
+        android:id="@+id/practiceFragment"
+        android:name="com.example.flagquizapp.practice.PracticeFragment"
+        android:label="fragment_practice"
+        tools:layout="@layout/fragment_practice" >
+        <action
+            android:id="@+id/action_practiceFragment_to_countryDetailFragment"
+            app:destination="@id/countryDetailFragment" />
+    </fragment>
 </navigation>

@@ -11,11 +11,22 @@ class MainViewModel: ViewModel() {
             return _navigateToCountryDetailFragment
         }
 
+    private var _navigateToPracticeFragment = MutableLiveData<Boolean>()
+    val navigateToPracticeFragment : LiveData<Boolean>
+        get() {
+            return _navigateToPracticeFragment
+        }
+
     fun btnNavigateCountryDetailFragmentClicked(){
         _navigateToCountryDetailFragment.value = true
     }
 
+    fun btnNavigatePracticeFragmentClicked(){
+        _navigateToPracticeFragment.value = true
+    }
+
     fun navigateFinish(){
         _navigateToCountryDetailFragment.value = false
+        _navigateToPracticeFragment.value = false
     }
 }

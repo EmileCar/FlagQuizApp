@@ -67,6 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:text="Practice"
+            android:onClick="@{() -> viewModel.btnNavigatePracticeFragmentClicked()}"
             android:textColor="@color/blue"
             app:layout_constraintBottom_toTopOf="@+id/button2"
             app:layout_constraintEnd_toEndOf="parent"

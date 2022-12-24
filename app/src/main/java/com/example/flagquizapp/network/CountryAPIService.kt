@@ -41,6 +41,8 @@ private const val BASE_URL = "https://restcountries.com/v3.1/"
         @GET("name/{countryname}")
         suspend fun getCountryData(@Path("countryname") countryName: String): List<Country>
 
+        @GET("all")
+        suspend fun getCountries(): List<Country>
     }
 
     /**
