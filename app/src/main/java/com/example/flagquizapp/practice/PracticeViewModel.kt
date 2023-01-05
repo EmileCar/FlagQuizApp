@@ -34,9 +34,12 @@ class PracticeViewModel: ViewModel(){
             return _loadingFinished
         }
 
+    var onlyIndependent = MutableLiveData<Boolean>()
+
     init{
         _error.value = ""
         _loadingFinished.value = false
+        onlyIndependent.value = false
         Log.d("MIJNPROBLEEM!", "practice-viewmodel-init")
 
         viewModelScope.launch {
@@ -60,5 +63,11 @@ class PracticeViewModel: ViewModel(){
 
     fun navigateToDetailFinished() {
         _country.value = null
+    }
+
+    fun switchClicked(){
+        _countryResponse.value = null
+        onlyIndependent.value = !onlyIndependent.value!!
+        Log.d("MIJNPROBLEEM!", onlyIndependent.value.toString())
     }
 }

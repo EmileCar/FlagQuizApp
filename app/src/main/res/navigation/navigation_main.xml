@@ -11,11 +11,14 @@
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
-            android:id="@+id/action_mainFragment_to_countryDetailFragment"
-            app:destination="@id/countryDetailFragment" />
-        <action
             android:id="@+id/action_mainFragment_to_practiceFragment"
             app:destination="@id/practiceFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_highscoreFragment"
+            app:destination="@id/highscoreFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_playActivity"
+            app:destination="@id/playActivity" />
     </fragment>
     <fragment
         android:id="@+id/countryDetailFragment"
@@ -34,4 +37,14 @@
             android:id="@+id/action_practiceFragment_to_countryDetailFragment"
             app:destination="@id/countryDetailFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/highscoreFragment"
+        android:name="com.example.flagquizapp.highscore.HighscoreFragment"
+        android:label="fragment_highscore"
+        tools:layout="@layout/fragment_highscore" />
+    <activity
+        android:id="@+id/playActivity"
+        android:name="com.example.flagquizapp.PlayActivity"
+        android:label="activity_play"
+        tools:layout="@layout/activity_play" />
 </navigation>

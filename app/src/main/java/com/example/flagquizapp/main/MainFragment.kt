@@ -1,6 +1,7 @@
 package com.example.flagquizapp.main
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -24,6 +25,14 @@ class MainFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         binding.viewModel = viewModel
 
+        viewModel.navigateToPlayActivity.observe(viewLifecycleOwner, Observer {
+            if (it){
+                Log.d("MIJNPROBLEEM!", "IE GAAT NAAR PLAYACTIVITY")
+                findNavController().navigate(MainFragmentDirections.actionMainFragmentToPlayActivity())
+                viewModel.navigateFinish()
+            }
+        })
+
         viewModel.navigateToPracticeFragment.observe(viewLifecycleOwner, Observer {
             if (it){
                 findNavController().navigate(MainFragmentDirections.actionMainFragmentToPracticeFragment())
@@ -31,7 +40,20 @@ class MainFragment : Fragment() {
             }
         })
 
+        viewModel.navigateToHighscoreFragment.observe(viewLifecycleOwner, Observer {
+            if (it){
+                findNavController().navigate(MainFragmentDirections.actionMainFragmentToHighscoreFragment())
+                viewModel.navigateFinish()
+            }
+        })
+
         return binding.root
+    }
+
+    override fun onResume(){
+        Log.d("MIJNPROBLEEM", "ONRESUME")
+        super.onResume()
+        viewModel.navigateFinish();
     }
 
 

@@ -1,6 +1,7 @@
 package com.example.flagquizapp.practice
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -50,6 +51,13 @@ class PracticeFragment : Fragment() {
                 viewModel.navigateToDetailFinished()
             }
         })
+
+        viewModel.onlyIndependent.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                Log.d("MIJNPROB", "test")
+            }
+        })
+
 
         binding.listCountries.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
