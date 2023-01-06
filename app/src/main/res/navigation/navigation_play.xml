@@ -18,5 +18,17 @@
         android:id="@+id/playFragment"
         android:name="com.example.flagquizapp.play.PlayFragment"
         android:label="fragment_play"
-        tools:layout="@layout/fragment_play" />
+        tools:layout="@layout/fragment_play" >
+        <action
+            android:id="@+id/action_playFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.example.flagquizapp.play.result.ResultFragment"
+        android:label="ResultFragment" >
+        <argument
+            android:name="score"
+            app:argType="integer" />
+    </fragment>
 </navigation>

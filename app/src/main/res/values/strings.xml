@@ -12,4 +12,7 @@
     <string name="population">Population: %s</string>
     <string name="area">Area: %s km²</string>
 
+    <string name="nameAbove">Good luck, %s</string>
+    <string name="congratulations">You scored %s countries!</string>
+
 </resources>

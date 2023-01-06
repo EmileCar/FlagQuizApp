@@ -58,7 +58,6 @@ class PracticeFragment : Fragment() {
             }
         })
 
-
         binding.listCountries.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
         // niet wegdoen anders gaat de progressBar niet weg

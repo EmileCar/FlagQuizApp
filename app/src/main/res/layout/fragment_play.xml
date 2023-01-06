@@ -58,6 +58,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:text="@={viewModel.guess}"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -101,5 +102,27 @@
             android:text="Score: 3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvNameAbove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@{@string/nameAbove(viewModel.score)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnToResult"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Give up"
+            android:onClick="@{() -> viewModel.btnClickResult()}"
+            android:textColor="@color/blue"
+            app:layout_constraintEnd_toEndOf="@+id/btnGuessCountry"
+            app:layout_constraintStart_toStartOf="@+id/btnSkipCountry"
+            app:layout_constraintTop_toBottomOf="@+id/btnGuessCountry" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

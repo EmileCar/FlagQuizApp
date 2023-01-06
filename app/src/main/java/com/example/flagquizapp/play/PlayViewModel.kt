@@ -15,6 +15,13 @@ class PlayViewModel(): ViewModel() {
     private var countries =  MutableLiveData<List<Country>?>()
     var currentCountry = MutableLiveData<Country?>()
     var guess = MutableLiveData<String?>()
+    var name = NameSingleton.instance().name
+
+    private var _navigateToResultFragment = MutableLiveData<Boolean>()
+    val navigateToResultFragment : LiveData<Boolean>
+        get() {
+            return _navigateToResultFragment
+        }
 
     private var _countryResponse = MutableLiveData<List<Country>?>()
     val countryResponse: LiveData<List<Country>?>
@@ -46,6 +53,12 @@ class PlayViewModel(): ViewModel() {
             return _wrongGuess
         }
 
+    private var _allCountriesPassed = MutableLiveData<Boolean>()
+    val allCountriesPassed : LiveData<Boolean>
+        get() {
+            return _allCountriesPassed
+        }
+
 
     init {
        // _name.value = NameSingleton.instance().name
@@ -53,6 +66,8 @@ class PlayViewModel(): ViewModel() {
         _error.value = ""
         _score.value = 0
         _loadingFinished.value = false
+        _allCountriesPassed.value = false
+        _navigateToResultFragment.value = false
         getRandomCountries()
     }
 
@@ -91,11 +106,25 @@ class PlayViewModel(): ViewModel() {
         }
     }
 
+    fun btnClickResult(){
+        _navigateToResultFragment.value = true
+    }
+
+    fun getScore(): Int{
+        return _score.value!!
+    }
+
+    fun navigateFinish(){
+        _navigateToResultFragment.value = false
+    }
+
     private fun showNextCountry(){
         index++
 
         if(index < countries.value!!.size){
             currentCountry.value = countries.value!![index];
+        } else {
+            _allCountriesPassed.value = true
         }
 
         guess.value = "";
