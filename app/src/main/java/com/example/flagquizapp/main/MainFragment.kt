@@ -51,7 +51,6 @@ class MainFragment : Fragment() {
     }
 
     override fun onResume(){
-        Log.d("MIJNPROBLEEM", "ONRESUME")
         super.onResume()
         viewModel.navigateFinish();
     }

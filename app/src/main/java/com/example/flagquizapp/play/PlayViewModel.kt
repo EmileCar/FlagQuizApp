@@ -1,20 +1,105 @@
 package com.example.flagquizapp.play
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.flagquizapp.NameSingleton
+import com.example.flagquizapp.models.Country
+import com.example.flagquizapp.network.CountryAPI
+import kotlinx.coroutines.launch
 
 class PlayViewModel(): ViewModel() {
-    private var _name = MutableLiveData<String>()
+    private var index = 0
+    private var countries =  MutableLiveData<List<Country>?>()
+    var currentCountry = MutableLiveData<Country?>()
+    var guess = MutableLiveData<String?>()
 
-    val name : LiveData<String>
+    private var _countryResponse = MutableLiveData<List<Country>?>()
+    val countryResponse: LiveData<List<Country>?>
         get() {
-            return _name
+            return _countryResponse
         }
 
+    private var _loadingFinished = MutableLiveData<Boolean>()
+    val loadingFinished : LiveData<Boolean>
+        get() {
+            return _loadingFinished
+        }
+
+    private var _error = MutableLiveData<String>()
+    val error: LiveData<String>
+        get() {
+            return _error
+        }
+
+    private var _score = MutableLiveData<Int>()
+    val score : LiveData<Int>
+        get() {
+            return _score
+        }
+
+    private var _wrongGuess = MutableLiveData<String?>()
+    val wrongGuess : LiveData<String?>
+        get() {
+            return _wrongGuess
+        }
+
+
     init {
-        _name.value = NameSingleton.instance().name
+       // _name.value = NameSingleton.instance().name
+        guess.value = ""
+        _error.value = ""
+        _score.value = 0
+        _loadingFinished.value = false
+        getRandomCountries()
     }
+
+    fun removeDependent(countries: List<Country>): List<Country>{
+        return countries.filter { it.independent != null && it.independent }.toList()
+    }
+
+    fun getRandomCountries(){
+        viewModelScope.launch {
+            try {
+                _countryResponse.value  = CountryAPI.retrofitService.getCountries()
+                countries.value = removeDependent(_countryResponse.value!!).shuffled()
+                Log.d("MIJNPROBLEEM!", countries.value!!.size.toString())
+                _loadingFinished.value = true
+                currentCountry.value = countries.value!![index]
+            } catch (e: Exception) {
+                _error.value = e.localizedMessage
+                _loadingFinished.value = true
+                Log.d("MIJNPROBLEEM!", e.localizedMessage)
+            }
+        }
+    }
+
+    fun btnClickSkip(){
+        showNextCountry()
+        Log.d("MIJNPROBLEEM!", currentCountry.value!!.name!!.common!!)
+    }
+
+    fun btnClickGuess(){
+        Log.d("MIJNPROBLEEM!", currentCountry.value!!.name!!.common!!)
+        if(guess.value!!.toLowerCase().trim().equals(currentCountry.value!!.name!!.common!!.toLowerCase().trim())){
+            _score.value = _score.value!! + 1
+            showNextCountry()
+        } else {
+            _wrongGuess.value = "Wrong guess"
+        }
+    }
+
+    private fun showNextCountry(){
+        index++
+
+        if(index < countries.value!!.size){
+            currentCountry.value = countries.value!![index];
+        }
+
+        guess.value = "";
+    }
+
 
 }

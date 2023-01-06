@@ -9,8 +9,7 @@ import com.example.flagquizapp.NameSingleton
 class OptionsViewModel: ViewModel() {
     var name = MutableLiveData<String>()
     var errorName = MutableLiveData<String?>()
-    private var mockupName = MutableLiveData<String?>()
-
+    var isInitialised = MutableLiveData<Boolean>()
 
     private var _navigateToPlayFragment = MutableLiveData<Boolean>()
     val navigateToPlayFragment : LiveData<Boolean>
@@ -26,9 +25,9 @@ class OptionsViewModel: ViewModel() {
 
     init {
         _navigateBackToMainActivity.value = false
+        isInitialised.value = false
         name.value = ""
         errorName.value = null
-        mockupName.value = null
     }
 
     fun btnNavigateBackToMainActivityClicked(){
@@ -41,16 +40,16 @@ class OptionsViewModel: ViewModel() {
 
     fun btnClickPlay(){
         Log.d("MIJNPROBLEEM", name.value!!)
+        name.value = name.value!!.trim()
         if(name.value == ""){
-            errorName.value = "Naam mag niet leeg zijn"
+            errorName.value = "Name can not be empty"
         } else if (name.value!!.length < 3){
-            errorName.value = "Gelieve meer dan 2 letters te voorzien"
+            errorName.value = "Please provide more than 2 characters"
         } else if (name.value!!.length > 15){
-            errorName.value = "Gelieve minder dan 15 letters te voorzien"
+            errorName.value = "Please provide less than 15 characters"
         } else {
             NameSingleton.instance().name = name.value
             _navigateToPlayFragment.value = true
-            Log.d("MIJNPROBLEEM!", "VELDEN ZIJN LEEg")
         }
     }
 }

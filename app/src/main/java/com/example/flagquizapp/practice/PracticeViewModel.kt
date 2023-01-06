@@ -36,6 +36,10 @@ class PracticeViewModel: ViewModel(){
 
     var onlyIndependent = MutableLiveData<Boolean>()
 
+    fun removeDependent(countries: List<Country>): List<Country>{
+        return countries.filter { it.independent != null && it.independent }.toList()
+    }
+
     init{
         _error.value = ""
         _loadingFinished.value = false
@@ -45,6 +49,7 @@ class PracticeViewModel: ViewModel(){
         viewModelScope.launch {
             try {
                 _countryResponse.value  = CountryAPI.retrofitService.getCountries()
+                _countryResponse.value = removeDependent(_countryResponse.value!!)
                 _loadingFinished.value = true
 
                 Log.d("MIJNPROBLEEM!", _countryResponse.value!!.size.toString())
