@@ -12,4 +12,8 @@ class GameRepository(private val gameDao: GameDao){
     suspend fun addGame(game: Game){
         gameDao.addGame(game)
     }
+
+    /*suspend fun addGuessedCountry(guessedCountry: GuessedCountry){
+        gameDao.addGuessedCountry(guessedCountry)
+    }*/
 }

@@ -12,6 +12,12 @@ class ResultViewModel(var __score: Int, var __guessedCountries: List<Country>): 
     val score : LiveData<Int>
         get() = _score
 
+    private var _dataAdded = MutableLiveData<Boolean>()
+    val dataAdded : LiveData<Boolean>
+        get() {
+            return _dataAdded
+        }
+
     private var _navigateBackToMain = MutableLiveData<Boolean>()
     val navigateBackToMain : LiveData<Boolean>
         get() {
@@ -28,6 +34,7 @@ class ResultViewModel(var __score: Int, var __guessedCountries: List<Country>): 
         _score.value = __score
         _guessedCountries.value = __guessedCountries
         _navigateBackToMain.value = false
+        _dataAdded.value = false
     }
 
     fun btnClickBackToMain(){

@@ -43,9 +43,13 @@
                 android:id="@+id/editTextName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@android:drawable/edit_text"
+                android:backgroundTintMode="src_over"
                 android:ems="10"
+                android:hint="..."
+                android:inputType="textPersonName"
                 android:text="@={viewModel.name}"
-                android:inputType="textPersonName" />
+                android:textColorHint="@color/blue" />
 
         </androidx.cardview.widget.CardView>
 
@@ -54,6 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:backgroundTint="@color/white"
             android:onClick="@{() -> viewModel.btnClickPlay()}"
             android:text="Play"
             android:textColor="@color/blue"

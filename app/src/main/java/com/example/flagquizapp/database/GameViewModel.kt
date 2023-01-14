@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import com.example.flagquizapp.models.Country
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -24,5 +25,9 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
         viewModelScope.launch(Dispatchers.IO){
             repository.addGame(game)
         }
+    }
+
+    fun addGuessedCountry(country: Country){
+
     }
 }

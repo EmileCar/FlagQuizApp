@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.FlagQuizApp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimary">@color/darkblue</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -10,12 +10,12 @@
         <item name="colorSecondaryVariant">@color/teal_200</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">@color/black</item>
+        <item name="android:statusBarColor">@color/darkblue</item>
         <item name="android:windowBackground">@drawable/bluebackground_gradient</item>
         <!-- Customize your theme here. -->
         <item name="android:textColorPrimary">@color/blue</item>
         <item name="android:textColorSecondary">@color/white</item>
         <item name="android:textColorTertiary">@color/white</item>
-
+        <item name="colorAccent">@android:color/white</item>
     </style>
 </resources>

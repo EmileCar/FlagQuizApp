@@ -1,6 +1,7 @@
 package com.example.flagquizapp.database
 
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import com.example.flagquizapp.models.Country
 
@@ -16,8 +17,7 @@ data class Game(
 data class GuessedCountry(
     @PrimaryKey(autoGenerate = true)
     var id: Int,
-    var gameId: String,
-    var country: Country
+    var gameId: Int,
 ){
 
 }

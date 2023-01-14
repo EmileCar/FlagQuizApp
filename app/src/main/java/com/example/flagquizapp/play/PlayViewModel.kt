@@ -1,6 +1,7 @@
 package com.example.flagquizapp.play
 
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.flagquizapp.NameSingleton
 import com.example.flagquizapp.models.Country
 import com.example.flagquizapp.network.CountryAPI
+import com.google.android.material.internal.ContextUtils.getActivity
 import kotlinx.coroutines.launch
 
 class PlayViewModel(): ViewModel() {
@@ -15,6 +17,7 @@ class PlayViewModel(): ViewModel() {
     private var countries =  MutableLiveData<List<Country>?>()
     private var guessedCountries: MutableList<Country> = mutableListOf()
     var currentCountry = MutableLiveData<Country?>()
+    var message = MutableLiveData<String?>()
     var guess = MutableLiveData<String?>()
     var name = NameSingleton.instance().name
 
@@ -63,6 +66,7 @@ class PlayViewModel(): ViewModel() {
 
     init {
         // _name.value = NameSingleton.instance().name
+        message.value = ""
         guess.value = ""
         _error.value = ""
         _score.value = 0
@@ -102,6 +106,7 @@ class PlayViewModel(): ViewModel() {
         if(guess.value!!.toLowerCase().trim().equals(currentCountry.value!!.name!!.common!!.toLowerCase().trim())){
             _score.value = _score.value!! + 1
             guessedCountries.add(currentCountry.value!!)
+            message.value = "You guessed " + currentCountry.value!!.name!!.common + " correctly!"
             showNextCountry()
         } else {
             _wrongGuess.value = "Wrong guess"

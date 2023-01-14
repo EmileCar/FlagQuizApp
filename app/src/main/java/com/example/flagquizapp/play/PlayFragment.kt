@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -14,6 +15,7 @@ import coil.load
 import com.example.flagquizapp.R
 import com.example.flagquizapp.databinding.FragmentPlayBinding
 import com.example.flagquizapp.main.MainFragmentDirections
+import com.google.android.material.internal.ContextUtils
 
 class PlayFragment : Fragment() {
 
@@ -60,6 +62,15 @@ class PlayFragment : Fragment() {
         viewModel.score.observe(viewLifecycleOwner, Observer {
             binding.tvScore.text = "Score:  " + it!!
         })
+
+        viewModel.message.observe(viewLifecycleOwner, Observer {
+            Log.d("MIJNPROBL", it!!)
+            if(!it.isNullOrBlank()){
+                Toast.makeText(activity, it!!, Toast.LENGTH_SHORT).show()
+            }
+        })
+
+
 
         // update the result button when all countries passed
         viewModel.allCountriesPassed.observe(viewLifecycleOwner, Observer {

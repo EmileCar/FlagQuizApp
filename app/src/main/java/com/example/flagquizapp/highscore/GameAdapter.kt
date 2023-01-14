@@ -26,7 +26,7 @@ class GameAdapter: ListAdapter<Game, GameAdapter.ViewHolder>(ToDoDiffCallback())
             game: Game,
             position: Int
         ) {
-            binding.tvPosition.text = position.toString()
+            binding.tvPosition.text = (position + 1).toString()
             binding.game = game
             binding.executePendingBindings()
         }
