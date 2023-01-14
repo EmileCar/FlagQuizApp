@@ -12,7 +12,7 @@ class GameAdapter: ListAdapter<Game, GameAdapter.ViewHolder>(ToDoDiffCallback())
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position)!!)
+        holder.bind(getItem(position)!!, position)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -22,15 +22,13 @@ class GameAdapter: ListAdapter<Game, GameAdapter.ViewHolder>(ToDoDiffCallback())
 
     class ViewHolder private constructor(val binding: GameInHighscoreListBinding) : RecyclerView.ViewHolder(binding.root){
 
-        private var pos = 1
-
         fun bind(
             game: Game,
+            position: Int
         ) {
-            binding.tvPosition.text = pos.toString()
+            binding.tvPosition.text = position.toString()
             binding.game = game
             binding.executePendingBindings()
-            pos++
         }
 
         companion object {
