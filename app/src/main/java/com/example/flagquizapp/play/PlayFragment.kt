@@ -28,6 +28,7 @@ class PlayFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
+        // load the game interface
         viewModel.loadingFinished.observe(viewLifecycleOwner, Observer {
             if(it!!){
                 binding.imgFlagInQuiz.visibility = View.VISIBLE;
@@ -45,18 +46,22 @@ class PlayFragment : Fragment() {
             }
         })
 
+        // change flag
         viewModel.currentCountry.observe(viewLifecycleOwner, Observer {
             binding.imgFlagInQuiz.load(it!!.flags!!.png!!)
         })
 
+        // observe a wrong guess
         viewModel.wrongGuess.observe(viewLifecycleOwner, Observer {
             binding.editTextGuess.setError(it)
         })
 
+        // update the score above
         viewModel.score.observe(viewLifecycleOwner, Observer {
             binding.tvScore.text = "Score:  " + it!!
         })
 
+        // update the result button when all countries passed
         viewModel.allCountriesPassed.observe(viewLifecycleOwner, Observer {
             if(it){
                 binding.btnToResult.text = "See results"
@@ -65,16 +70,13 @@ class PlayFragment : Fragment() {
             }
         })
 
+        // observe navigation to resultfragment
         viewModel.navigateToResultFragment.observe(viewLifecycleOwner, Observer {
             if(it){
-                findNavController().navigate(PlayFragmentDirections.actionPlayFragmentToResultFragment(viewModel.getScore()))
+                findNavController().navigate(PlayFragmentDirections.actionPlayFragmentToResultFragment(viewModel.getScore(), viewModel.getGuessedCountries().toTypedArray()))
                 viewModel.navigateFinish()
             }
         })
-
-        @Override fun onBackPressed(){
-            Log.d("MIJNPROBLEEM", "PRESSBACK")
-        }
 
         return binding.root
     }

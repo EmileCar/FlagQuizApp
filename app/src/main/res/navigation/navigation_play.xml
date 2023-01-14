@@ -30,5 +30,8 @@
         <argument
             android:name="score"
             app:argType="integer" />
+        <argument
+            android:name="guessedCountries"
+            app:argType="com.example.flagquizapp.models.Country[]" />
     </fragment>
 </navigation>

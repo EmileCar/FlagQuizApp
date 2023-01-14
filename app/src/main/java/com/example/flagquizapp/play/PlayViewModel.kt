@@ -13,6 +13,7 @@ import kotlinx.coroutines.launch
 class PlayViewModel(): ViewModel() {
     private var index = 0
     private var countries =  MutableLiveData<List<Country>?>()
+    private var guessedCountries: MutableList<Country> = mutableListOf()
     var currentCountry = MutableLiveData<Country?>()
     var guess = MutableLiveData<String?>()
     var name = NameSingleton.instance().name
@@ -61,7 +62,7 @@ class PlayViewModel(): ViewModel() {
 
 
     init {
-       // _name.value = NameSingleton.instance().name
+        // _name.value = NameSingleton.instance().name
         guess.value = ""
         _error.value = ""
         _score.value = 0
@@ -100,6 +101,7 @@ class PlayViewModel(): ViewModel() {
         Log.d("MIJNPROBLEEM!", currentCountry.value!!.name!!.common!!)
         if(guess.value!!.toLowerCase().trim().equals(currentCountry.value!!.name!!.common!!.toLowerCase().trim())){
             _score.value = _score.value!! + 1
+            guessedCountries.add(currentCountry.value!!)
             showNextCountry()
         } else {
             _wrongGuess.value = "Wrong guess"
@@ -112,6 +114,12 @@ class PlayViewModel(): ViewModel() {
 
     fun getScore(): Int{
         return _score.value!!
+    }
+
+    fun getGuessedCountries(): List<Country>{
+        Log.d("MIJNPROBLEEM", ": " + guessedCountries!!.toString())
+        // TODO: NULLPOINTEREXCEPTION wanneer guessedCountries leeg is
+        return guessedCountries!!
     }
 
     fun navigateFinish(){

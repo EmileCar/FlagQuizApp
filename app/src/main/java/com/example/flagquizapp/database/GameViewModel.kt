@@ -9,13 +9,15 @@ import kotlinx.coroutines.launch
 
 class GameViewModel(application: Application): AndroidViewModel(application) {
 
-    private val readAllData: LiveData<List<Game>>
+    val readAllData: LiveData<List<Game>>
+    val readHighScores: LiveData<List<Game>>
     private val repository: GameRepository
 
     init{
         val gameDao = GameDatabase.getDatabase(application).gameDao()
         repository = GameRepository(gameDao)
         readAllData = repository.readAllData
+        readHighScores = repository.readHighScores
     }
 
     fun addGame(game: Game){

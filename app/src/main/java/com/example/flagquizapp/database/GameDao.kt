@@ -15,4 +15,11 @@ interface GameDao {
 
     @Query("SELECT * FROM game_table ORDER BY id ASC")
     fun readAllData(): LiveData<List<Game>>
+
+    @Query("SELECT * FROM game_table ORDER BY score DESC LIMIT 20")
+    fun readHighScores(): LiveData<List<Game>>
+
+
+
+
 }
