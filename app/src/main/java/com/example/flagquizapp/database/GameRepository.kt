@@ -13,6 +13,11 @@ class GameRepository(private val gameDao: GameDao){
         gameDao.addGame(game)
     }
 
+    suspend fun deleteAll(){
+        gameDao.deleteAll()
+    }
+
+
     /*suspend fun addGuessedCountry(guessedCountry: GuessedCountry){
         gameDao.addGuessedCountry(guessedCountry)
     }*/

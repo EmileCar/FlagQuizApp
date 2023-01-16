@@ -19,5 +19,9 @@ class HighScoreViewModel: ViewModel() {
         position.value = 0
     }
 
+    fun deleteHighScores(){
+
+    }
+
 
 }

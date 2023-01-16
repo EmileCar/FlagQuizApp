@@ -23,13 +23,13 @@ class PlayActivity : AppCompatActivity() {
 
         builder.setMessage("Do you want to go back to the main menu?")
             .setCancelable(false)
-            .setPositiveButton("Yes", DialogInterface.OnClickListener { dialog, id ->
+            .setPositiveButton("Yes", DialogInterface.OnClickListener { _, _ ->
                 finish()
                 this.finish()
             })
             .setNegativeButton(
                 "No",
-                DialogInterface.OnClickListener { dialog, id -> //  Action for 'NO' Button
+                DialogInterface.OnClickListener { dialog, _ -> //  Action for 'NO' Button
                     dialog.cancel()
                 })
 

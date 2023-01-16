@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
-            android:text="There are no played games yet. \nGo play the quiz!"
+            android:text="@string/noData"
             android:textAlignment="center"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -39,23 +39,23 @@
             app:layout_constraintTop_toTopOf="@+id/listGames" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tvLegendName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="42dp"
             android:layout_marginTop="8dp"
-            android:text="Name:"
+            android:text="@string/highscoreLegend_name"
             android:textStyle="italic"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/tvLegendScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:text="Score:"
+            android:text="@string/highscoreLegend_score"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

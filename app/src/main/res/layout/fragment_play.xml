@@ -73,7 +73,7 @@
             android:layout_weight="1"
             android:backgroundTint="@color/white"
             android:onClick="@{() -> viewModel.btnClickSkip()}"
-            android:text="Skip"
+            android:text="@string/play_btnSkip"
             android:textColor="@android:color/holo_red_dark"
             app:layout_constraintEnd_toStartOf="@+id/btnGuessCountry"
             app:layout_constraintHorizontal_bias="0.5"
@@ -88,7 +88,7 @@
             android:layout_weight="1"
             android:backgroundTint="@color/white"
             android:onClick="@{() -> viewModel.btnClickGuess()}"
-            android:text="Guess"
+            android:text="@string/play_btnGuess"
             android:textAllCaps="true"
             android:textColor="@android:color/holo_blue_dark"
             app:layout_constraintEnd_toEndOf="parent"
@@ -102,7 +102,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:text="Score: 3"
+            android:text=""
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -112,7 +112,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="@{@string/nameAbove(viewModel.name)}"
+            android:text="@{@string/play_nameAbove(viewModel.name)}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -123,7 +123,7 @@
             android:layout_marginTop="24dp"
             android:backgroundTint="@color/white"
             android:onClick="@{() -> viewModel.btnClickResult()}"
-            android:text="Give up"
+            android:text="@string/play_btnGiveUp"
             android:textColor="@color/blue"
             app:layout_constraintEnd_toEndOf="@+id/btnGuessCountry"
             app:layout_constraintStart_toStartOf="@+id/btnSkipCountry"

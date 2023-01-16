@@ -23,6 +23,8 @@ interface GameDao {
     @Query("SELECT * FROM game_table ORDER BY score DESC LIMIT 20")
     fun readHighScores(): LiveData<List<Game>>
 
+    @Query("DELETE FROM game_table")
+    suspend fun deleteAll()
 
 
 

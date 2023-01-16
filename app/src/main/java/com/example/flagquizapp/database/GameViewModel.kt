@@ -27,6 +27,12 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
         }
     }
 
+    fun deleteAll(){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.deleteAll()
+        }
+    }
+
     fun addGuessedCountry(country: Country){
 
     }

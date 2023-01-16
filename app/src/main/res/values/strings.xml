@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">FlagQuizApp</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="app_name">Flag Quiz</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
@@ -12,7 +11,31 @@
     <string name="population">Population: %s</string>
     <string name="area">Area: %s km²</string>
 
-    <string name="nameAbove">Good luck, %s</string>
-    <string name="congratulations">You scored %s countries!</string>
+    <!-- HIGH SCORE FRAGMENT STRINGS -->
+    <string name="noData">There are no played games yet. \nGo play the quiz!</string>
+    <string name="highscoreLegend_name">Name:</string>
+    <string name="highscoreLegend_score">Score:</string>
+
+    <!-- MAIN FRAGMENT STRINGS -->
+    <string name="main_subtitle">Think you know your flags? Try our</string>
+    <string name="btn_playquiz">Play Quiz</string>
+    <string name="main_title">Flag Quiz!</string>
+    <string name="btn_practice">Practice</string>
+    <string name="btn_highscores">High Scores</string>
+
+    <!-- OPTION FRAGMENT STRINGS -->
+    <string name="options_namePrompt">What is your name?</string>
+    <string name="options_btnPlay">Play</string>
+
+    <!-- PLAY FRAGMENT STRINGS -->
+    <string name="play_btnSkip">Skip</string>
+    <string name="play_btnGuess">Guess</string>
+    <string name="play_btnGiveUp">Give up</string>
+    <string name="play_nameAbove">Good luck, %s</string>
+
+    <!-- RESULT FRAGMENT STRINGS -->
+    <string name="result_btnGoBack">Go back to main screen</string>
+    <string name="result_congratulations">You scored %s countries!</string>
+
 
 </resources>

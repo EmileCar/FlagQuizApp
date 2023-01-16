@@ -17,5 +17,10 @@
         <item name="android:textColorSecondary">@color/blue</item>
         <item name="android:textColorTertiary">@color/white</item>
         <item name="colorAccent">@android:color/white</item>
+        <item name="actionOverflowButtonStyle">@style/deleteColor</item>
+    </style>
+
+    <style name="deleteColor" parent="Widget.AppCompat.Light.ActionButton">
+        <item name="tint">@color/white</item>
     </style>
 </resources>

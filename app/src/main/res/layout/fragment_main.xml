@@ -20,62 +20,64 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:text="Think you know your flags? Try our"
+            android:text="@string/main_subtitle"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/tv_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:backgroundTint="@color/white"
-            android:onClick="@{() -> viewModel.btnNavigateToPlayActivity()}"
-            android:text="Play Quiz"
-            android:textColor="@color/blue"
-            app:layout_constraintBottom_toTopOf="@+id/button3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
-            android:onClick="@{() -> viewModel.btnNavigateHighscoreFragmentClicked()}"
-            android:text="High Scores"
-            android:textColor="@color/blue"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text="Flag Quiz!"
+            android:text="@string/main_title"
             android:textSize="34sp"
             android:textStyle="bold|italic"
-            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
             app:layout_constraintEnd_toEndOf="@+id/tv_subtitle"
             app:layout_constraintStart_toStartOf="@+id/tv_subtitle" />
 
-        <Button
-            android:id="@+id/button3"
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:backgroundTint="@color/white"
-            android:onClick="@{() -> viewModel.btnNavigatePracticeFragmentClicked()}"
-            android:text="Practice"
-            android:textColor="@color/blue"
-            app:layout_constraintBottom_toTopOf="@+id/button2"
+            android:layout_marginBottom="50dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/btnPlayQuiz"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="@color/white"
+                android:onClick="@{() -> viewModel.btnNavigateToPlayActivity()}"
+                android:text="@string/btn_playquiz"
+                android:textColor="@color/blue" />
+
+            <Button
+                android:id="@+id/btnPractice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="@color/white"
+                android:onClick="@{() -> viewModel.btnNavigatePracticeFragmentClicked()}"
+                android:text="@string/btn_practice"
+                android:textColor="@color/blue" />
+
+            <Button
+                android:id="@+id/btnHighscore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:onClick="@{() -> viewModel.btnNavigateHighscoreFragmentClicked()}"
+                android:text="@string/btn_highscores"
+                android:textColor="@color/blue" />
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/imageView"
