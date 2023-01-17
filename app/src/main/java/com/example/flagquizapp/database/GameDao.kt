@@ -14,9 +14,6 @@ interface GameDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addGame(game: Game)
 
-    /*@Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addGuessedCountry(guessedCountry: GuessedCountry)*/
-
     @Query("SELECT * FROM game_table ORDER BY id ASC")
     fun readAllData(): LiveData<List<Game>>
 
@@ -25,7 +22,5 @@ interface GameDao {
 
     @Query("DELETE FROM game_table")
     suspend fun deleteAll()
-
-
 
 }

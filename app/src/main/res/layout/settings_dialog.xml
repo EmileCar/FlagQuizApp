@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <Switch
+        android:id="@+id/settings_independentSwitch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Independent?" />
+
+    <CheckBox
+        android:id="@+id/settings_africaCheckBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Africa" />
+
+    <CheckBox
+        android:id="@+id/settings_AmericasCheckBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Americas" />
+
+    <CheckBox
+        android:id="@+id/settings_AsiaCheckBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Asia" />
+
+    <CheckBox
+        android:id="@+id/settings_EuropeCheckBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Europe" />
+
+    <CheckBox
+        android:id="@+id/settings_OceaniaCheckBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Oceania" />
+    </LinearLayout>
+
+</LinearLayout>

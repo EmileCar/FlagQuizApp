@@ -7,24 +7,23 @@ import com.example.flagquizapp.NameSingleton
 import com.example.flagquizapp.models.Country
 
 class ResultViewModel(var __score: Int, var __guessedCountries: List<Country>): ViewModel() {
+    // ALL (LiveData) VARIABLES
     var name = NameSingleton.instance().name
     private val _score = MutableLiveData<Int>()
+    private var _dataAdded = MutableLiveData<Boolean>()
+    private var _navigateBackToMain = MutableLiveData<Boolean>()
+    private var _guessedCountries = MutableLiveData<List<Country>>()
+    // ALL GETTERS FOR VARIABLES
     val score : LiveData<Int>
         get() = _score
-
-    private var _dataAdded = MutableLiveData<Boolean>()
     val dataAdded : LiveData<Boolean>
         get() {
             return _dataAdded
         }
-
-    private var _navigateBackToMain = MutableLiveData<Boolean>()
     val navigateBackToMain : LiveData<Boolean>
         get() {
             return _navigateBackToMain
         }
-
-    private var _guessedCountries = MutableLiveData<List<Country>>()
     val guessedCountries : LiveData<List<Country>>
         get() {
             return _guessedCountries
@@ -37,10 +36,12 @@ class ResultViewModel(var __score: Int, var __guessedCountries: List<Country>): 
         _dataAdded.value = false
     }
 
+    // Handle button click to main
     fun btnClickBackToMain(){
         _navigateBackToMain.value = true
     }
 
+    // Getter for playerscore
     fun getPlayerScore(): Int{
         return _score.value!!
     }

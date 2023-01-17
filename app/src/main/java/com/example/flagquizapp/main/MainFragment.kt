@@ -21,18 +21,20 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Initialize binding
         binding = FragmentMainBinding.inflate(layoutInflater, container, false)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         binding.viewModel = viewModel
 
+        // NAVIGATE to play activity
         viewModel.navigateToPlayActivity.observe(viewLifecycleOwner, Observer {
             if (it){
-                Log.d("MIJNPROBLEEM!", "IE GAAT NAAR PLAYACTIVITY")
                 findNavController().navigate(MainFragmentDirections.actionMainFragmentToPlayActivity())
                 viewModel.navigateFinish()
             }
         })
 
+        // NAVIGATE to practice fragment
         viewModel.navigateToPracticeFragment.observe(viewLifecycleOwner, Observer {
             if (it){
                 findNavController().navigate(MainFragmentDirections.actionMainFragmentToPracticeFragment())
@@ -40,6 +42,7 @@ class MainFragment : Fragment() {
             }
         })
 
+        // NAVIGATE to highscore fragment
         viewModel.navigateToHighscoreFragment.observe(viewLifecycleOwner, Observer {
             if (it){
                 findNavController().navigate(MainFragmentDirections.actionMainFragmentToHighscoreFragment())

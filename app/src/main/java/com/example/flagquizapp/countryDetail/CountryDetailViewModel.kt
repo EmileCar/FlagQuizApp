@@ -5,21 +5,25 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.flagquizapp.models.Country
 
-class CountryDetailViewModel(var __country: Country): ViewModel() {
+class CountryDetailViewModel(__country: Country): ViewModel() {
+    // COUNTRY LIVEDATA VARIABLE & GETTER
     private val _country = MutableLiveData<Country>()
     val country: LiveData<Country>
         get() = _country
 
+    // INIT
     init{
         _country.value = __country
     }
 
+    // Convert the capitals of an object to string value
+    //      - south africa has multiple capitals (why capital field is a List<String>)
+    //      - antarctica does not have a capital (possible NullPointerException)
     fun convertCapitalsToString(): String{
-        var string = ""
-        if(country.value!!.capital != null){    // antarctica heeft bv geen capital
-            string = country.value!!.capital!!.joinToString(", ")
+        val string = if(country.value!!.capital != null){    // antarctica heeft bv geen capital
+            country.value!!.capital!!.joinToString(", ")
         } else {
-            string = "No capital"
+            "No capital"
         }
         return string
     }

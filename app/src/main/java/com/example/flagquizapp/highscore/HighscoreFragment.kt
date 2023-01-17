@@ -2,7 +2,6 @@ package com.example.flagquizapp.highscore
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -14,8 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.flagquizapp.R
 import com.example.flagquizapp.database.GameViewModel
 import com.example.flagquizapp.databinding.FragmentHighscoreBinding
-import com.example.flagquizapp.practice.CountryAdapter
-import com.example.flagquizapp.practice.CountryClickListener
 
 class HighscoreFragment : Fragment() {
 
@@ -27,6 +24,7 @@ class HighscoreFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Initialize binding
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_highscore, container, false)
         viewModel = ViewModelProvider(this).get(HighScoreViewModel::class.java)
         gameViewModel = ViewModelProvider(this).get(GameViewModel::class.java)
@@ -48,7 +46,6 @@ class HighscoreFragment : Fragment() {
                 binding.tvNoGamesYet.visibility = View.VISIBLE
                 binding.tvLegendName.visibility = View.INVISIBLE
                 binding.tvLegendScore.visibility = View.INVISIBLE
-
                 adapter.submitList(null)
             }
         })

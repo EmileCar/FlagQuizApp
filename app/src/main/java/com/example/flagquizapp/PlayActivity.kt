@@ -1,7 +1,6 @@
 package com.example.flagquizapp
 
 import android.app.AlertDialog
-import android.content.DialogInterface
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.flagquizapp.databinding.ActivityPlayBinding
@@ -23,15 +22,15 @@ class PlayActivity : AppCompatActivity() {
 
         builder.setMessage("Do you want to go back to the main menu?")
             .setCancelable(false)
-            .setPositiveButton("Yes", DialogInterface.OnClickListener { _, _ ->
+            .setPositiveButton("Yes") { _, _ ->
                 finish()
                 this.finish()
-            })
+            }
             .setNegativeButton(
-                "No",
-                DialogInterface.OnClickListener { dialog, _ -> //  Action for 'NO' Button
-                    dialog.cancel()
-                })
+                "No"
+            ) { dialog, _ -> //  Action for 'NO' Button
+                dialog.cancel()
+            }
 
         val alert = builder.create()
         alert.show()

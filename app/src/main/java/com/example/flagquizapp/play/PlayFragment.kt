@@ -26,11 +26,12 @@ class PlayFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Initialize binding
         binding = FragmentPlayBinding.inflate(layoutInflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        // load the game interface
+        // Load the game interface
         viewModel.loadingFinished.observe(viewLifecycleOwner, Observer {
             if(it!!){
                 binding.imgFlagInQuiz.visibility = View.VISIBLE;
@@ -48,29 +49,28 @@ class PlayFragment : Fragment() {
             }
         })
 
-        // change flag
+        // Change flag
         viewModel.currentCountry.observe(viewLifecycleOwner, Observer {
             binding.imgFlagInQuiz.load(it!!.flags!!.png!!)
         })
 
-        // observe a wrong guess
+        // Observe a wrong guess
         viewModel.wrongGuess.observe(viewLifecycleOwner, Observer {
             binding.editTextGuess.setError(it)
         })
 
-        // update the score above
+        // Update the score above
         viewModel.score.observe(viewLifecycleOwner, Observer {
             binding.tvScore.text = "Score:  " + it!!
         })
 
+        // Observe message (when country is guessed) and show Toast
         viewModel.message.observe(viewLifecycleOwner, Observer {
             Log.d("MIJNPROBL", it!!)
             if(!it.isNullOrBlank()){
                 Toast.makeText(activity, it!!, Toast.LENGTH_SHORT).show()
             }
         })
-
-
 
         // update the result button when all countries passed
         viewModel.allCountriesPassed.observe(viewLifecycleOwner, Observer {

@@ -1,17 +1,12 @@
 package com.example.flagquizapp.play.options
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.example.flagquizapp.MainActivity
-import com.example.flagquizapp.NameSingleton
 import com.example.flagquizapp.databinding.FragmentOptionsBinding
 
 
@@ -24,38 +19,36 @@ class OptionsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Initialize binding
         binding = FragmentOptionsBinding.inflate(layoutInflater, container, false)
         binding.viewModel = viewModel
 
+        // Navigate to play fragment
         viewModel.navigateToPlayFragment.observe(viewLifecycleOwner, Observer {
             if (it) {
-                Log.d("MIJNPROBLEEM!", "IE GAAT NAAR PLAYFRAGMENT")
                 findNavController().navigate(OptionsFragmentDirections.actionOptionsFragmentToPlayFragment())
                 viewModel.navigateFinish()
             }
         })
 
-        viewModel.errorName.observe(viewLifecycleOwner, Observer {
-            binding.editTextName.setError(it)
-        })
-
+        // Navigate back to main activity
         viewModel.navigateBackToMainActivity.observe(viewLifecycleOwner, Observer {
             if (it) {
                 this.requireActivity().finish()
             }
         })
 
+        // Set error when name is not valid
+        viewModel.errorName.observe(viewLifecycleOwner, Observer {
+            binding.editTextName.setError(it)
+        })
+
         return binding.root
     }
 
     override fun onResume(){
-        /*if(viewModel.isInitialised.value!! && NameSingleton.instance().name != null){
-            findNavController().navigate(OptionsFragmentDirections.actionOptionsFragmentToPlayFragment())
-        } else {
-
-        }*/
         super.onResume()
-        viewModel.navigateFinish();
-
+        viewModel.navigateFinish()
     }
+
 }

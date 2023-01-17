@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <item
+            android:id="@+id/menu_settings_africa"
+            android:title="Africa"
+            android:iconTint="@color/white"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/menu_settings_americas"
+            android:title="Americas"
+            android:iconTint="@color/white"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/menu_settings_asia"
+            android:title="Asia"
+            android:iconTint="@color/white"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/menu_settings_europe"
+            android:title="Europe"
+            android:iconTint="@color/white"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/menu_settings_oceania"
+            android:title="Oceania"
+            android:iconTint="@color/white"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/menu_settings_all"
+            android:title="All"
+            android:iconTint="@color/white"
+            app:showAsAction="never" />
+</menu>
